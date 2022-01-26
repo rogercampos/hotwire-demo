@@ -1,12 +1,15 @@
-= form_with model: new_note, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
+- if Note.can_add_more_notes?
+  = form_with model: new_note, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
 
-  div class="mb-2"
-    = f.field_with_errors(:title) do
-      = f.label :title, class: "block"
-      = f.text_field :title, class: "shadow rounded"
+    div class="mb-2"
+      = f.field_with_errors(:title) do
+        = f.label :title, class: "block"
+        = f.text_field :title, class: "shadow rounded"
 
-  div class="mb-2"
-    = f.label :content, class: "block"
-    = f.text_area :content, class: "shadow rounded"
+    div class="mb-2"
+      = f.label :content, class: "block"
+      = f.text_area :content, class: "shadow rounded"
 
-  = f.submit "Create", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
+    = f.submit "Create", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
+- else
+  p You already have 4 notes! Delete some to create more.
