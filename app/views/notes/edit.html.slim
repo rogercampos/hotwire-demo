@@ -1,0 +1,17 @@
+turbo-frame id=dom_id(@note)
+  div class="mb-6 px-4 py-2 rounded bg-gray-200 border border-gray-300"
+    div class="flex justify-between items-center mb-2"
+      p class="font-bold text-gray-900"= @note.title
+      = link_to "Close", note_path(@note), class: "underline"
+
+    = form_with model: @note, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
+      div class="mb-2"
+        = f.field_with_errors(:title) do
+          = f.label :title, class: "block"
+          = f.text_field :title, class: "shadow rounded"
+
+      div class="mb-2"
+        = f.label :content, class: "block"
+        = f.text_area :content, class: "shadow rounded"
+
+      = f.submit "Update", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
