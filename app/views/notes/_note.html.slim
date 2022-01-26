@@ -3,7 +3,7 @@ turbo-frame id=dom_id(note)
     div class="flex justify-between items-center mb-2"
       p class="font-bold text-gray-900"= note.title
       div class="flex items-center"
-        = link_to "Edit", edit_note_path(note), class: "px-2 py-1 text-white bg-blue-500 rounded"
+        = link_to "Edit", edit_note_path(note), class: "px-2 py-1 text-white bg-blue-500 rounded", data: { turbo_action: "advance" }
         = button_to "Remove", note_path(note), method: :delete, class: "px-2 py-1 text-white bg-red-500 rounded ml-1"
 
     - if note.content.present?
