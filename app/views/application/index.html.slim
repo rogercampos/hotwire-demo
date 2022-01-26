@@ -1,8 +1,8 @@
 h1 class="text-4xl" Notes
 
 section class="mt-10" id="notes_list"
-  - @notes.each do |note|
-    = render "notes/note", note: note
+  - @notes.each do |note_id|
+    turbo-frame id="note_#{note_id}" src=note_path(note_id)
 
   - if @notes.empty?
     p No notes yet.
