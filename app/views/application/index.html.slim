@@ -1,0 +1,26 @@
+h1 class="text-4xl" Notes
+
+section class="mt-10"
+  - @notes.each do |note|
+    div class="mb-6 p-4 rounded bg-gray-200 border border-gray-300"
+      p class="font-bold text-gray-900"= note.title
+      - if note.content.present?
+        p class="border-t-2 border-gray-300 pt-2 text-gray-900"= simple_format note.content
+
+  - if @notes.empty?
+    p No notes yet.
+
+
+section class="mt-10"
+  = form_with model: @note, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
+
+    div class="mb-2"
+      = f.field_with_errors(:title) do
+        = f.label :title, class: "block"
+        = f.text_field :title, class: "shadow rounded"
+
+    div class="mb-2"
+      = f.label :content, class: "block"
+      = f.text_area :content, class: "shadow rounded"
+
+    = f.submit "Create", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
