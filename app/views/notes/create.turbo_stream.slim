@@ -1,0 +1,13 @@
+- if @result
+  turbo-stream action="append" target="notes_list"
+    template
+      = render "notes/note", note: @note
+
+  turbo-stream action="update" target="new_note_form"
+    template
+      = render "notes/new_form", new_note: Note.new
+
+- else
+  turbo-stream action="update" target="new_note_form"
+    template
+      = render "notes/new_form", new_note: @note

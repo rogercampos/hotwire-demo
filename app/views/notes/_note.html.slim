@@ -1,0 +1,7 @@
+div class="mb-6 px-4 py-2 rounded bg-gray-200 border border-gray-300" id=dom_id(note)
+  div class="flex justify-between items-center mb-2"
+    p class="font-bold text-gray-900"= note.title
+    = button_to "Remove", note_path(note), method: :delete, class: "px-2 py-1 text-white bg-red-500 rounded"
+
+  - if note.content.present?
+    p class="border-t-2 border-gray-300 pt-2 text-gray-900"= simple_format note.content
