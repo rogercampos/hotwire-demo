@@ -17,6 +17,7 @@ gem "redis"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem 'dotenv-rails'
+gem 'faker'
 
 group :development, :test do
   gem "pry-rails"
