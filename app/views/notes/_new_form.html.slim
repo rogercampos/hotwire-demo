@@ -1,6 +1,5 @@
 - if Note.can_add_more_notes?
   = form_with model: new_note, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
-
     div class="mb-2"
       = f.field_with_errors(:title) do
         = f.label :title, class: "block"
@@ -10,6 +9,36 @@
       = f.label :content, class: "block"
       = f.text_area :content, class: "shadow rounded"
 
+
+    / div class="mb-2"
+    /   = fields(:foo) do |a|
+    /     = a.text_field :cuca
+
+
+    / div class="mb-2"
+      = label_tag "Nested values"
+      = text_field_tag "foo[nested][barbar]"
+      = text_field_tag "foo[nested][something_else]"
+
+
+    / div class="mb-2"
+      = label_tag "Array of values"
+      = text_field_tag "foo[colors][]"
+      = text_field_tag "foo[colors][]"
+
+    / div class="mb-2"
+      = label_tag "Array of hashes"
+      = text_field_tag "foo[taxon][0][name]"
+      = text_field_tag "foo[taxon][0][id]"
+
+      = text_field_tag "foo[taxon][1][name]"
+      = text_field_tag "foo[taxon][1][id]"
+
+
     = f.submit "Create", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
+
+    / button formaction="/foobar" type="submit"
+      | Another save
+
 - else
   p You already have 4 notes! Delete some to create more.

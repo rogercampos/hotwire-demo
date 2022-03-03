@@ -1,0 +1,23 @@
+= form_with model: @user_form, url: users_path, builder: CustomFormBuilder, html: { autocomplete: "off" } do |f|
+
+  div class="mb-2"
+    = f.field_with_errors(:first_name) do
+      = f.label :first_name, class: "block"
+      = f.text_field :first_name, class: "shadow rounded"
+
+  div class="mb-2"
+    = f.field_with_errors(:last_name) do
+      = f.label :last_name, class: "block"
+      = f.text_field :last_name, class: "shadow rounded"
+
+  div class="mb-2"
+    = f.field_with_errors(:billing_zip) do
+      = f.label :billing_zip, class: "block"
+      = f.text_field :billing_zip, class: "shadow rounded"
+
+  div class="mb-2"
+    = f.field_with_errors(:billing_country) do
+      = f.label :billing_country, class: "block"
+      = f.text_field :billing_country, class: "shadow rounded"
+
+  = f.submit "Create", class: "block mt-2 rounded bg-green-600 text-white px-2 py-1"
